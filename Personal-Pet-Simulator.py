@@ -19,18 +19,18 @@ def feedPet():
 petToys = {"cat": ["cat nip", "plush mouse", "string"], "dog": ["ball", "plush toy", "bone"], "turtle": ["shell", "castle", "floating deck" ], "rabbit": ["tunnel", "ball", "stick"]}
 
 # Get pet new toy
-def getToys():
-    print("Yay!! Let's get new toys!")
-    toyOptions = petToys[pet["type"]]
-  
+def getToy():
+    toyChoices = petToys[pet["type"]]
     toyNum = -1
+    while toyNum < 0 or toyNum >= len(petToys):
+        print("Here are your toy choices: ")
+    for i in range(len(toyChoices)):
+      print(str(i) + ": " + toyChoices[i])
+    
+    toyNum = int(input("Please input your choice of pet toy: "))
 
-    while toyNum < 0 or toyNum >= len(toyOptions) - 1:
-        for i in range(len(toyOptions)):
-            print(str(i) + ": " + toyOptions[i])
-        toyNum = int(input("Input the number of the toy you would like: " ))
-
-    chosenToy = toyOptions[toyNum]
+    chosenToy = toyChoices[toyNum]
+    
     pet["toys"].append(chosenToy)
     print ("Cool! You selected the " + chosenToy + "!")
 
@@ -91,15 +91,15 @@ def main():
     #initialize our pet
     initPet(petToys)
 
-    menuOptions = {"Q": { "function": quitSimulator, "text": "Quit the game"}, "F": { "function": feedPet, "text": "Feed " + pet["name"] + "!"}, "G": { "function": getToys, "text": "Get a toy for " + pet["name"] + "!"}, "P": { "function": playToys, "text": "Play with " + pet["name"] + " and your toys!"} }
+    menuOptions = {"Q": { "function": quitSimulator, "text": "Quit the game"}, "F": { "function": feedPet, "text": "Feed " + pet["name"] + "!"}, "G": { "function": getToy, "text": "Get a toy for " + pet["name"] + "!"}, "P": { "function": playToys, "text": "Play with " + pet["name"] + " and your toys!"} }
     # print the menu of options
     keepPlaying = True
     while keepPlaying:
         menuSelection = ""
 ## get input from players & validate
-    while menuSelection not in menuOptions.keys():
-        printMenu(menuOptions)
-        menuSelection = input("Which of these menu options would you like to use? ").upper()
+        while menuSelection not in menuOptions.keys():
+            printMenu(menuOptions)
+            menuSelection = input("Which of these menu options would you like to use? ").upper()
 
     # user can quit using Q
     if menuSelection == "Q":
@@ -107,11 +107,11 @@ def main():
 
     menuOptions[menuSelection]["function"]()
 
-#increase pet's hunger
+#increase pet's hunger over time without play
     pet["hunger"] += 10
     pet["age"] += 1
 
     printStats()
 
 
-    main()
+main()
