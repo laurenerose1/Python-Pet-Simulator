@@ -1,19 +1,18 @@
 # This is a pick your own adventure type of similuator where you get to create your own pet, play with it, get new toys etc.
 # create different pet type options
-
 # pet dictionary
 pet = {"name": "", "type": "", "age": 0, "hunger": 0, "toys": []}
 
 # option to quit game
 def quitSimulator():
-    print("Quit the pet simulator. Thanks for playing")
+    print("Quit the pet simulator.")
 # feed your pet- decrease hunger
 def feedPet():
     newHunger = pet["hunger"] - 20
     if newHunger < 0:
         newHunger = 0
     pet["hunger"] -= 20
-    print("You have fed your pet, decreasing hunger by 10!")
+    print(" You have fed your pet, decreasing hunger by 10!")
 
 # pet toys data object
 petToys = {"cat": ["cat nip", "plush mouse", "string"], "dog": ["ball", "plush toy", "bone"], "turtle": ["shell", "castle", "floating deck" ], "rabbit": ["tunnel", "ball", "stick"]}
@@ -36,7 +35,7 @@ def getToy():
 
     # Pet Plays with toys
 def playToys():
-    print(pet["name"] + "had a wonderful time playing with toys!")
+    print(pet["name"] + " had a wonderful time playing with toys!")
 
 # print menu
 def printMenu(menuOptions):
@@ -53,12 +52,13 @@ def printMenu(menuOptions):
 
 #current pet stats 
 def printStats():
+    print("Thanks for playing!")
     print("Your " +pet["type"] + pet["name"] + " is doing great!!")
     print ("Your pet currently has: " + str(len(pet["toys"])) + ", which are: ")
     for toy in pet["toys"]:
         print(toy)
     print("Your pet's hunger level currently is: " + str(pet["hunger"]) + "of a max 100.")
-    print("Your pet is" + str(pet["age"]) + "days old.")
+    print("Your pet is " + str(pet["age"]) + " days old.")
     print()
 
 # Pick your pet prompt
@@ -102,8 +102,8 @@ def main():
             menuSelection = input("Which of these menu options would you like to use? ").upper()
 
     # user can quit using Q
-    if menuSelection == "Q":
-        keepPlaying = False
+        if menuSelection == "Q":
+            keepPlaying = False
 
     menuOptions[menuSelection]["function"]()
 
