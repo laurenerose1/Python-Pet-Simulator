@@ -5,14 +5,14 @@ pet = {"name": "", "type": "", "age": 0, "hunger": 0, "toys": []}
 
 # option to quit game
 def quitSimulator():
-    print("Quit the pet simulator.")
+    print("You have quit the pet simulator.")
 # feed your pet- decrease hunger
 def feedPet():
     newHunger = pet["hunger"] - 20
     if newHunger < 0:
         newHunger = 0
     pet["hunger"] -= 20
-    print(" You have fed your pet, decreasing hunger by 10!")
+    print("You have fed your pet, decreasing hunger by 10!")
 
 # pet toys data object
 petToys = {"cat": ["cat nip", "plush mouse", "string"], "dog": ["ball", "plush toy", "bone"], "turtle": ["shell", "castle", "floating deck" ], "rabbit": ["tunnel", "ball", "stick"]}
@@ -52,13 +52,13 @@ def printMenu(menuOptions):
 
 #current pet stats 
 def printStats():
-    print("Thanks for playing!")
+    print("Thanks for Playing today!")
     print("Your " +pet["type"] + pet["name"] + " is doing great!!")
     print ("Your pet currently has: " + str(len(pet["toys"])) + ", which are: ")
     for toy in pet["toys"]:
         print(toy)
-    print("Your pet's hunger level currently is: " + str(pet["hunger"]) + "of a max 100.")
-    print("Your pet is " + str(pet["age"]) + " days old.")
+    print("Your pet's hunger level currently is: " + str(pet["hunger"]) + " of a max 100.")
+    print("Your pet is" + str(pet["age"]) + " days old.")
     print()
 
 # Pick your pet prompt
@@ -105,7 +105,7 @@ def main():
         if menuSelection == "Q":
             keepPlaying = False
 
-    menuOptions[menuSelection]["function"]()
+        menuOptions[menuSelection]["function"]()
 
 #increase pet's hunger over time without play
     pet["hunger"] += 10
