@@ -21,8 +21,7 @@ petToys = {"cat": ["cat nip", "plush mouse", "string"], "dog": ["ball", "plush t
 def getToy():
     toyChoices = petToys[pet["type"]]
     toyNum = -1
-    while toyNum < 0 or toyNum >= len(petToys):
-        print("Here are your toy choices: ")
+    print("Here are your toy choices: ")
     for i in range(len(toyChoices)):
       print(str(i) + ": " + toyChoices[i])
     
